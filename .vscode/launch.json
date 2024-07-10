@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "debugpy",
+            "request": "attach",
+            "name": "chainlit Debug",
+            "connect": { "host": "chainlit", "port": 5678 },
+            "justMyCode": false,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/main/chainlit/src",
+                    "remoteRoot": "/usr/src/server"
+                }
+            ]
+        }
+    ]
+}

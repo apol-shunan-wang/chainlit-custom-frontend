@@ -1,0 +1,42 @@
+
+[
+    {
+        "qid": 0,
+        "question": "問1. もっとも業務経験の長い、あるいは豊富だと考える職種を教えてください。",
+        "target": "ALL",
+        "widget_type": "Select",
+        "answers": [
+            {"label": "経理・財務", "value": 1},
+            {"label": "総務", "value": 2},
+            {"label": "法務", "value": 3},
+            {"label": "人事", "value": 4},
+            {"label": "情報システム", "value": 5}
+        ]
+    },
+    {
+        "qid": 1,
+        "question": "問2. Microsoft Office（Word, Excel, PowerPointなど）の利用経験を教えてください。",
+        "target": "ALL",
+        "widget_type": "Select",
+        "answers": [
+            {"label": "複雑な機能も使える（マクロ活用等）", "value": 4},
+            {"label": "基本的な機能が問題なく使える", "value": 3},
+            {"label": "基本的な機能を使ったことがある", "value": 2},
+            {"label": "一部の機能を使ったことがある", "value": 1},
+            {"label": "ほぼ使ったことがない", "value": 0}
+        ]
+    },
+    {
+        "qid": 2,
+        "question": "問3. マネジメントしたメンバーの最大数を教えてください。",
+        "target": "ALL",
+        "widget_type": "Select",
+        "answers": [
+            {"label": "0名", "value": 0},
+            {"label": "1名~3名", "value": 1},
+            {"label": "4名~7名", "value": 2},
+            {"label": "8名~10名", "value": 3},
+            {"label": "11名以上", "value": 4}
+        ]
+    }
+]

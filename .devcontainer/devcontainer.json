@@ -1,0 +1,31 @@
+{
+    "name": "gpt-iv-pj develop environment",
+    // "initializeCommand": "USERNAME=$(cat .env | grep GITHUB_USERNAME | awk -F '=' '{print $2}'); TOKEN=$(cat .env | grep GITHUB_PERSONAL_ACCESS_TOKEN | awk -F '=' '{print $2}'); echo $TOKEN | docker login ghcr.io -u $USERNAME --password-stdin",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "vscode",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "ms-python.flake8",
+                "ms-python.isort",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "usernamehw.errorlens",
+                "ms-playwright.playwright",
+                "GitHub.vscode-pull-request-github",
+                "mhutchie.git-graph",
+                "donjayamanne.githistory",
+                "gruntfuggly.todo-tree",
+                "mervin.markdown-formatter",
+                "bierner.markdown-mermaid",
+                "shd101wyy.markdown-preview-enhanced",
+                "yzhang.markdown-all-in-one"
+            ]
+        }
+    }
+}

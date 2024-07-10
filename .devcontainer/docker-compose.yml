@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+  devcontainer:
+    image: "gpt-iv-pj-devcontainer"
+    container_name: "gpt-iv-pj-devcontainer"
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        USER_UID: ${USER_UID}
+        USER_GID: ${USER_GID}
+    tty: true
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    networks:
+      - gpt-iv-debug-network
+
+networks:
+  gpt-iv-debug-network:
+    name: gpt-iv-debug-network

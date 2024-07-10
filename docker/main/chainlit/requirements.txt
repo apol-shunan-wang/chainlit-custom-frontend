@@ -1,0 +1,8 @@
+fastapi==0.110.3
+chainlit==1.1.306
+neo4j==5.22.0
+plotly==5.22.0
+tomli==2.0.1
+python-dotenv==1.0.1
+openai==1.35.10
+Faker==26.0.0

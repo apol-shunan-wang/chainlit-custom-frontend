@@ -1,0 +1,11 @@
+{
+    "CREATE_Message": "text_template/cypher/create_step.cypher",
+    "MERGE_Message": "text_template/cypher/merge_step.cypher",
+    "MERGE_NEXT": "text_template/cypher/merge_next.cypher",
+    "Message_NEXT_Message_with_TOPIC": "text_template/cypher/merge_step_with_topic.cypher",
+    "Evaluation_EVAL_Message": "text_template/cypher/merge_eval.cypher",
+    "start_step": "text_template/cypher/start_step.cypher",
+    "get_user_properties": "text_template/cypher/get_user_properties.cypher",
+    "get_threads_path": "text_template/cypher/get_threads_path.cypher",
+    "upsert_feedback": "text_template/cypher/upsert_feedback.cypher"
+}

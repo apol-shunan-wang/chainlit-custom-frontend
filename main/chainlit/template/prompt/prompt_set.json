@@ -1,0 +1,14 @@
+{
+    "system_definition": "text_template/prompt/system_definition.txt",
+    "greeting": "text_template/prompt/greeting.txt",
+    "intro": "text_template/prompt/intro.txt",
+    "ask_action_timeout": "text_template/prompt/ask_action_timeout.txt",
+    "make_first_question": "text_template/prompt/make_first_question_instruction.txt",
+    "make_next_question": "text_template/prompt/make_next_question_instruction.txt",
+    "ask_next_topic": "text_template/prompt/next_topic.txt",
+    "SCE": "text_template/prompt/single_hop_communication_eval_instruction.txt",
+    "SSE": "text_template/prompt/single_hop_skill_eval_instruction.txt",
+    "WSE": "text_template/prompt/whole_hop_skill_eval_instruction.txt",
+    "ending": "text_template/prompt/ending.txt",
+    "test": "text_template/prompt/test.json"
+}

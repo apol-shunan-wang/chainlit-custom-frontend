@@ -1,0 +1,66 @@
+version: "3.3"
+
+services:
+  chainlit:
+    image: "gpt-iv-chainlit"
+    container_name: "chainlit"
+    build:
+      context: .
+      dockerfile: ./docker/main/chainlit/Dockerfile
+    tty: true
+    stdin_open: true
+    ports:
+      - 8000:8000
+      - 5678:5678
+    environment:
+      TZ: Asia/Tokyo
+
+    networks:
+      - gpt-iv-internal-network
+      - gpt-iv-debug-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    volumes:
+      - ./main/chainlit/src:/usr/src/server
+      - ./main/chainlit/template:/usr/src/server/text_template  # TODO 整理
+      - ./main/chainlit/frontend:/usr/src/server/frontend  # TODO 整理
+
+  neo4j:
+    image: "gpt-iv-neo4j"
+    container_name: "neo4j"
+    build:
+      context: .
+      dockerfile: ./docker/neo4j/Dockerfile
+    tty: true
+    stdin_open: true
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      # NEO4J_db_temporal_timezone: Asia/Tokyo
+      NEO4J_AUTH: neo4j/mocmocmoc
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8 
+    volumes:
+      - ./mount/neo4j/logs:/logs
+      - ./mount/neo4j/conf:/conf
+      - ./testdata/dev:/testdata
+    networks:
+      - gpt-iv-internal-network
+    healthcheck:
+      test: "wget http://localhost:7474 || exit 1"
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+networks:
+  default:
+    name: bridge
+    external: true
+
+  gpt-iv-internal-network:
+
+  gpt-iv-debug-network:
+    # devcontainer のネットワークに繋げる
+    external: true

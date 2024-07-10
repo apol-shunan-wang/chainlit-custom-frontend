@@ -1,0 +1,1 @@
+MATCH (u:User {email: $email}) RETURN u.email, u.password, u.createdAt, u.name, u.phonenumber

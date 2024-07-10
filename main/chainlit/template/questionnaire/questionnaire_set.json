@@ -1,0 +1,38 @@
+[
+    {
+        "qid": 0,
+        "question": "問1. Pythonを用いた機械学習モデル開発経験の年数を教えてください。",
+        "target": "ALL",
+        "widget_type": "Select",
+        "answers": [
+            {"label": "未経験", "value": 0},
+            {"label": "1年未満", "value": 1},
+            {"label": "1年以上2年未満", "value": 2},
+            {"label": "2年以上5年未満", "value": 3},
+            {"label": "5年以上", "value": 4}
+        ]
+    },
+    {
+        "qid": 1,
+        "question": "問2. 機械学習モデル開発プロジェクトのPM経験の有無を教えてください。",
+        "target": "ALL",
+        "widget_type": "Select",
+        "answers": [
+            {"label": "あり", "value": 1},
+            {"label": "なし", "value": 0}
+        ]
+    },
+    {
+        "qid": 2,
+        "question": "問3. プロジェクトで管理したことのあるメンバーの最大数を教えてください。",
+        "target": "ALL",
+        "widget_type": "Select",
+        "answers": [
+            {"label": "0名", "value": 0},
+            {"label": "1名", "value": 1},
+            {"label": "2名~3名", "value": 2},
+            {"label": "4名~5名", "value": 3},
+            {"label": "6名以上", "value": 4}
+        ]
+    }
+]

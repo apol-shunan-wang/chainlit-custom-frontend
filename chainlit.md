@@ -26,7 +26,7 @@ AIとの質疑応答を通じてあなたのポテンシャルを重視して評
 ## 社内PoCの始め方
 
 ### このリポジトリのmasterブランチをクローンする
-`git clone https://github.com/apol2020/GPT-interviewer.git`
+ `git clone git@github.com:apol-yuichiro-noguchi/GPT-interviewer.git`
 
 ### クローンしたリポジトリに移動する
 `cd GPT-interviewer`

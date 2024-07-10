@@ -1,0 +1,64 @@
+{
+  // 改行コード
+  "files.eol": "\n",
+
+  // editor
+  "editor.detectIndentation": false, // true にすると開いたファイルの設定を踏襲するようになってしまう
+  "typescript.format.enable": false, // デフォルトのフォーマッターをoff にする（設定しなくても大丈夫そうだが...)
+
+  // Pylance
+  "python.languageServer": "Pylance",
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.typeCheckingMode": "basic",
+
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "black-formatter.args": ["--line-length", "160"],
+  "isort.args": ["--profile", "black"],
+  "flake8.args": [
+    // E203: whitespace before :  (black と競合するので)
+    // E266 ## コメントのシャープが２つ以上
+    // E501 line length
+    // E712 == True のエラー (sqlarchemyで使うので)
+    // W503 line break before binary operator
+    // W504 演算子の後の改行, E501 line length
+    "--ignore=E203,E266,E501,E712,W503,W504",
+    "--exclude=tool"
+  ],
+
+  // eslint
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  // Markdown ファイルは自動フォーマットしない
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all",
+    "editor.acceptSuggestionOnEnter": "off",
+    "files.trimTrailingWhitespace": false
+  }
+}
