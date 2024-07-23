@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/python
-FROM python:3.12.4-slim-bookworm
+FROM python:3.12.4-bookworm
 
 ARG USERNAME=vscode
 ARG USER_UID

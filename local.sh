@@ -50,11 +50,23 @@ case ${command} in
     ${docker_compose} -f ${COMPOSE_FILE} up -d;
     ${docker_compose} -f ${COMPOSE_FILE} exec neo4j /var/lib/neo4j/bin/cypher-shell -u neo4j -p mocmocmoc -d neo4j -f /testdata/init_data;
     ;;
+  react-install)
+    ${docker_compose} -f ${COMPOSE_FILE} run --rm react sh -c "yarn install";
+    ;;
   logneo4j)
     ${docker_compose} -f ${COMPOSE_FILE} logs -f neo4j;
     ;;
   logchainlit)
     ${docker_compose} -f ${COMPOSE_FILE} logs -f chainlit;
+    ;;
+  logdb)
+    ${docker_compose} -f ${COMPOSE_FILE} logs -f postgres;
+    ;;
+  logreact)
+    ${docker_compose} -f ${COMPOSE_FILE} logs -f react;
+    ;;
+  logweb)
+    ${docker_compose} -f ${COMPOSE_FILE} logs -f nginx;
     ;;
   build)
     ${docker_compose} -f ${COMPOSE_FILE} build;

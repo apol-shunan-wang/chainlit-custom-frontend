@@ -6,3 +6,10 @@ tomli==2.0.1
 python-dotenv==1.0.1
 openai==1.35.10
 Faker==26.0.0
+
+uvicorn==0.25.0
+
+# postgresql
+sqlalchemy==1.4.46
+sqlalchemy[mypy]
+psycopg2==2.9.5

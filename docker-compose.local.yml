@@ -3,7 +3,7 @@ version: "3.3"
 services:
   chainlit:
     image: "gpt-iv-chainlit"
-    container_name: "chainlit"
+    container_name: "gpt-iv-chainlit"
     build:
       context: .
       dockerfile: ./docker/main/chainlit/Dockerfile
@@ -15,11 +15,19 @@ services:
     environment:
       TZ: Asia/Tokyo
 
+      DB_USER: main_user
+      DB_PASSWORD: password
+      DB_HOST: postgres
+      DB_DBNAME: gptiv
+      DB_PORT: 5432
+
     networks:
       - gpt-iv-internal-network
       - gpt-iv-debug-network
     depends_on:
       neo4j:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     volumes:
       - ./main/chainlit/src:/usr/src/server
@@ -28,7 +36,7 @@ services:
 
   neo4j:
     image: "gpt-iv-neo4j"
-    container_name: "neo4j"
+    container_name: "gpt-iv-neo4j"
     build:
       context: .
       dockerfile: ./docker/neo4j/Dockerfile
@@ -53,6 +61,80 @@ services:
       interval: 3s
       timeout: 3s
       retries: 20
+
+  postgres:
+    image: "gpt-iv-postgres"
+    container_name: "gpt-iv-postgres"
+    build:
+      context: .
+      dockerfile: ./docker/postgres/Dockerfile
+    tty: true
+    stdin_open: true
+    ports:
+      - 5432:5432
+    environment:
+      TZ: Asia/Tokyo
+
+      # database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: gptiv
+
+      # pgdump, psql
+      PGHOST: postgres
+      PGPORT: 5432
+      PGUSER: postgres
+      PGPASSWORD: password
+      PGDATABASE: gptiv
+    working_dir: /work
+    volumes:
+      - ./mount/pgdata:/docker-entrypoint-initdb.d:ro
+    networks:
+      - gpt-iv-internal-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  react:
+    image: "gpt-iv-react"
+    container_name: "gpt-iv-react"
+    build:
+      context: .
+      dockerfile: ./docker/main/react/Dockerfile
+    tty: true
+    stdin_open: true
+    ports:
+      - 3000:3000
+      - 9229:9229
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./main/react:/usr/src/app
+    command: sh -c "yarn dev"
+    networks:
+      - gpt-iv-internal-network
+      - gpt-iv-debug-network
+
+  nginx:
+    image: "gpt-iv-nginx"
+    container_name: "gpt-iv-nginx"
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    tty: true
+    stdin_open: true
+    ports:
+      - 8080:8080
+    environment:
+      TZ: Asia/Tokyo
+      # API_URL: "http://fastapi:8000"
+    networks:
+      - gpt-iv-internal-network
+    depends_on:
+      - chainlit
+      - react
 
 networks:
   default:
